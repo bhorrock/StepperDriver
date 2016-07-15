@@ -44,7 +44,7 @@ ms1_pin(ms1_pin), ms2_pin(ms2_pin), ms3_pin(ms3_pin)
 void A4988::init(void){
     BasicStepperDriver::init();
 
-    if (!IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin)){
+    if (!IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms2_pin) || !IS_CONNECTED(ms3_pin)){
         return;
     }
 
@@ -64,7 +64,7 @@ unsigned A4988::setMicrostep(unsigned microsteps){
 }
 
 unsigned A4988::_setMicrostep(unsigned microsteps, const uint8_t ms_table[], const int ms_table_size){
-    if (!IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin)){
+    if (!IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms2_pin) || !IS_CONNECTED(ms3_pin)){
         return this->microsteps;
     }
 
