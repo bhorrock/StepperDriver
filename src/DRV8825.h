@@ -33,5 +33,6 @@ public:
     DRV8825(int steps, int dir_pin, int step_pin, int enable_pin);
     DRV8825(int steps, int dir_pin, int step_pin, int mode0_pin, int mode1_pin, int mode2_pin);
     DRV8825(int steps, int dir_pin, int step_pin, int enable_pin, int mode0_pin, int mode1_pin, int mode2_pin);
+    unsigned setMicrostep(unsigned microsteps);
 };
 #endif // DRV8825_H

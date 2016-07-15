@@ -33,3 +33,9 @@ DRV8825::DRV8825(int steps, int dir_pin, int step_pin, int mode0_pin, int mode1_
 DRV8825::DRV8825(int steps, int dir_pin, int step_pin, int enable_pin, int mode0_pin, int mode1_pin, int mode2_pin)
 :A4988(steps, dir_pin, step_pin, enable_pin, mode0_pin, mode1_pin, mode2_pin)
 {}
+
+unsigned DRV8825::setMicrostep(unsigned microsteps){
+    microsteps = BasicStepperDriver::setMicrostep(microsteps);
+    return _setMicrostep(microsteps, ms_table, sizeof(ms_table));
+}
+

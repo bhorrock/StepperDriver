@@ -26,6 +26,7 @@ protected:
     // wakeup time, nSLEEP inactive to STEP (1000us)
     static const int wakeup_time = 1000;
     // also 200ns between ENBL/DIR/MSx changes and STEP HIGH
+    unsigned _setMicrostep(unsigned microsteps, const uint8_t ms_table[], const int ms_table_size);
 public:
     // microstep range (1, 16, 32 etc)
     static const unsigned max_microstep = 16;

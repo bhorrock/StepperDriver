@@ -59,14 +59,17 @@ void A4988::init(void){
  * If the control pins are not connected, we recalculate the timing only
  */
 unsigned A4988::setMicrostep(unsigned microsteps){
-    BasicStepperDriver::setMicrostep(microsteps);
+    microsteps = BasicStepperDriver::setMicrostep(microsteps);
+    return _setMicrostep(microsteps, ms_table, sizeof(ms_table));
+}
 
+unsigned A4988::_setMicrostep(unsigned microsteps, const uint8_t ms_table[], const int ms_table_size){
     if (!IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin) || !IS_CONNECTED(ms1_pin)){
         return this->microsteps;
     }
 
     int i = 0;
-    while (i < sizeof(ms_table)){
+    while (i < ms_table_size){
         if (this->microsteps & (1<<i)){
             uint8_t mask = ms_table[i];
             digitalWrite(ms3_pin, mask & 4);
